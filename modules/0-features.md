@@ -20,5 +20,7 @@ Optional Features
 - Fax
   - Fax to Email
   - Web to Fax
+  - Fax to Fax
+  - Fax to CUPS
 - Blacklist
 - Callback Queues
