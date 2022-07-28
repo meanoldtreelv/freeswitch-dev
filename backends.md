@@ -40,6 +40,7 @@ There are two main approaches to keeping the configurations in sync, and each ap
 ### Realtime Info
 Realtime data stored by FreeSWITCH includes sip registrations, agent statuses, active channels, queue positions, etc. This data needs to be accessable at all times to all FreeSWITCH calling nodes so that new call sessions can be routed and handled accordingly.
 In a vanilla installation this is stored as a SQLite database on disk. There is support built into the core code to move this over to a Postgres server, either locally via unix socket or via remote connection. Individual Modules use their own database connections (defaulting to SQLite) and would need to be pointed to remote database during config.
+This information is best queried from the FreeSWITCH Event Socket instead of from the database directly.
   - Clustered Postgres
     - Masterless (CockroachDB)
       - designed to be an N+1 scalable postgres solution
