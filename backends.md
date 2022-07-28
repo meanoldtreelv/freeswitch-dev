@@ -92,7 +92,7 @@ There are four different CDR modules avalible, three of which should be consider
   - mod_cdr_sqlite
     - This is the default module that writes cdr to a local sqlite database without the option for rotation. It is effectively useless for our purposes
   - mod_cdr_csv
-    - This module writes CDR data to CSV files on disk. 
+    - This module writes CDR data to CSV files on disk.
     - Supports time based rotation without HUP
     - Would need to be ingested as the CDR data and muxed as the data would be call server specific
   - mod_cdr_pq_csv
@@ -107,3 +107,4 @@ There are four different CDR modules avalible, three of which should be consider
     - writes each CDR entry as its own document within the Database
     - native MongoDB driver
     - Very Easy to scale database horozontally.
+    - can use Unix Socket for increased performance
