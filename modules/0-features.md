@@ -13,6 +13,9 @@ Required list of feature applications
 - Dial By Name Directory
 - FMFM
 - Park and retrieve
+- Operator Panel
+- CID Prepend
+- System Language
 
 
 Optional Features
