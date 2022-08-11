@@ -18,7 +18,9 @@ Recording files written by FreeSWITCH can be retrieved via an API call in SSP wi
 Currently we are offloading callrecordings to AWS S3, we would be able to pivot the location of those recordings onto CEPH reducing our AWS billing and keeping the files within our own ecosystem (a HUGE requirement for certain certifications such as SOC 2)
 
 ### Storage space
-Moving forward with a clustered FreeSWITCH solution we should not
+Moving forward with a clustered FreeSWITCH solution we should not require anywhere near as much disk space compared to the current Asterisk approach. Even with deduplication each Asterisk host will reach several gigabytes of difference from template in configuration and logfiles alone. In contrast the FreeSWITCH nodes will remain at their initial size given that the nodes are ephemeral and do not store any stateful information directly.
+
+By centralizing our storage pools for Discrete Files (this document), Configuration Files, Realtime Database records, and CDR Database records. We can have clear visibility on what is consuming our storage resources, and where to direct further expansion as each datatype has unique storage needs. 
 
 ## Requirements
 
@@ -29,7 +31,7 @@ There was initial discussion of using an XtremeIO Xbric SSD SAN as backing stora
 
 In the uses cases where CEPH would be deployed, the average file size to be retrieved will be less than 10MB, and a majority of files will be in the KB range.
 
-Additionally, by placing all of our files on a single SAN we introduce a singular point of failure that CEPH is specifically engineered to avoid. In the CEPH ecosystem files are replicated across multiple hosts so that in a loss event (disk, controller, host, rack, datacenter) there remains at minimum one copy of the file which is immediately replicated out to other hosts to prevent complete data loss. 
+Additionally, by placing all of our files on a single SAN we introduce a singular point of failure that CEPH is specifically engineered to avoid. In the CEPH ecosystem files are replicated across multiple hosts so that in a loss event (disk, controller, host, rack, datacenter) there remains at minimum one copy of the file which is immediately replicated out to other hosts to prevent complete data loss.
 
 #### *This particular SAN may be a __MUCH__ better fit to house the CDR databases.*
 

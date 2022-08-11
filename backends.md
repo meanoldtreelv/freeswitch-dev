@@ -2,7 +2,18 @@
 
 #### There are several datatypes to be addressed when clustering FreeSWITCH
 
-### Configuration
+## Selected Options
+Configuration - Git Managed files on disk (no sync)
+Realtime - CockroachDB sharded databases
+Voicemail DB - Same CockroachDB database as Realtime
+Voicemail Static - CEPHfs object Storage
+CDR Database - MongoDB backed by XtremeIO SSD SAN
+
+
+## Availible Options:
+
+
+### Configuration Files
 These are the XML/LUA files that make up the static configuration of the running FreeSWITCH server. Also included in this heading are the "static" recording files such as those used for announcements and IVRs.
 There are two main approaches to keeping the configurations in sync, and each approach has multiple implementations.
   - Filesystem Based
