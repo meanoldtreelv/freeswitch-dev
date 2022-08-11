@@ -66,7 +66,7 @@ This information is best queried from the FreeSWITCH Event Socket instead of fro
 Voicemail files need to be synced across all calling servers. This is not quite as easy as the configuration files, as there is also a database that indexes all voicemail files to track their statuses.
 mod_voicemail is set up for a SQLite db by default and has an option to use a ODBC DSN. Any database connection would need to support such DSN connenctions.
   - Database Backend
-    - Clustered Postgres (see above)
+    - **Clustered Postgres (see above)**
       - most recent versions of mod_voicemail also support postgres nativly when specified in the DSN
     - Clustered MySQL solution using ndbd
       - requires further research
@@ -77,7 +77,7 @@ mod_voicemail is set up for a SQLite db by default and has an option to use a OD
       - silent instant replication of voicemail files across the cluster.
       - large storage requirement as there will be as many complete copies of the voicemail recordings as there are call servers
       - SSP can access files via mount on non call-server
-    - DB backed FUSE
+    - **DB backed FUSE**
       - use a NoSQL database with a FUSE driver to store the voicemail files
       - Reccomendataions are either MongoDB or CouchDB
       - Significant storage array savings as 1+N copies of the data exist rather than 1 per calling node.
