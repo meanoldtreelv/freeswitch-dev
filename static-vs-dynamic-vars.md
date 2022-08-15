@@ -13,6 +13,6 @@ Inline (lua.so) is embedded within an XML document and is called when the dialpl
 Using dynamic variables in the dialplan allows for each call to be processed with the most up to date information without calling a ReloadXML and walking the entire dialplan. This is very useful for information that is very frequently updated (such as outbound caller ID [Strolid])
 
 There are two issues with this approach being applied to the entire configuration;
-  The first is that each varaible must be queried individually on every call. These queries must be made in realtime and prevent the call from proceeding while they are being executed.
+  The first is that each varaible must be queried individually on every call. These queries must be made in realtime and  will prevent the call from proceeding while they are being executed.
 
-  The second is that some modules store their own copy of a variable and is not refreshed unless a ReloadXML is called. An example of this would be mod_voicemail storing the VM password in its own reference table within the CoreDB.
+  The second is that some modules store their own copy of a variable and is not refreshed unless a ReloadXML is called. An example of this would be mod_voicemail storing the VM password in its own reference table within the CoreDB, another is mod_callcenter that keeps agents contact information stored in its own sqlite (migratable to postgres) database that can only be updated via the command reload mod_callcenter. 
